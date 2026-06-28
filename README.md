@@ -73,39 +73,7 @@ How it fits together
 - Button handlers in SubscriptionGUI create PersonalPlan or ProPlan objects and add them to this list.
 - Prompts and member operations dispatch to the appropriate subclass (PersonalPlan or ProPlan) via instanceof checks and casts.
 - Export and load operations are text-file based: export appends human-readable blocks to an export file and the record counter ensures unique persistent indices across runs.
-
-How to run (development / quickstart)
-This is a plain Java Swing application using the JDK standard library (no external dependencies). Build and run from the repository root.
-
-1) Ensure you have a JDK installed (Java 8+ recommended).
-2) Create the TextFiles directory the app expects (or update the file path constants in SubscriptionGUI):
-   - Recommended: create a folder at repository-root named `TextFiles`.
-   - Then create two empty files inside it:
-     - TextFiles/exportTo.txt
-     - TextFiles/recordCounter.txt
-   - SubscriptionGUI currently references:
-     - data_file = "../../TextFiles/exportTo.txt"
-     - counter_file = "../../TextFiles/recordCounter.txt"
-    If running from the project root, you may need to adjust these paths or change the working directory so the program finds the files (see Notes below).
-
-3) Compile:
-```bash
-# from repository root
-javac -d out/ ./src/src/*.java
-```
-
-4) Run:
-```bash
-java -cp out/ SubscriptionGUI
-```
-
-Notes about file paths
-- SubscriptionGUI uses relative paths ("../../TextFiles/…"). The correct placement depends on the working directory used when launching the app. Easiest options:
-  - Run from the project root and change the constants to:
-    - "./TextFiles/exportTo.txt" and "./TextFiles/recordCounter.txt"
-  - Or create the TextFiles folder such that the path referenced by the code resolves (two directories up from where the class files are loaded).
-- If you package as a JAR, update SubscriptionGUI's data_file and counter_file constants to an absolute or project-relative path.
-
+  
 Basic usage / workflow (GUI)
 1. Launch the app. The main window exposes:
    - Left-side buttons (create Personal Plan, create Pro Plan, Display All, Display By Plan, Prompt, Add/Remove Member, Purchase Token, Export to File, Load From File, etc).
@@ -138,16 +106,3 @@ Limitations & suggestions
 - File path constants are fragile (relative paths). Consider using a config file or allowing the user to pick a file via a JFileChooser.
 - ProPlan.team removal sorts the list on every remove; for larger lists, maintain sorted insertion or use a TreeSet (if duplicates are not allowed) or more robust data structure.
 
-Developer notes / important places in code
-- src/src/AIModel.java — calculateTotalToken() core check
-- src/src/PersonalPlan.java — enterPrompt(), purchaseTokens()
-- src/src/ProPlan.java — addMember(), removeMember(), binarySearch()
-- src/src/SubscriptionGUI.java — GUI layout, all button handlers, export/load/update file logic, readRecordCounter(), writeRecordCounter(), updateTokensInFile()
-
-Try asking
-- How should I change the file path constants so export/load use `./TextFiles` when running from the project root?
-- Can you add JSON-based export/import instead of the current plain-text format and show the code changes to SubscriptionGUI?
-- Could we replace the simple "word count" token estimator with a real tokenizer (example: using a small tokenizer lib or integrating an OpenAI tokenizer)?
-
-License & author
-- Add a LICENSE file to the repo (MIT is a common choice) and an AUTHORS or CONTRIBUTING file if you want contributions.
