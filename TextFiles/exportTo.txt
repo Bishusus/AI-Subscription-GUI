@@ -1,0 +1,49 @@
+Type: PersonalPlan
+Index: 0
+Model Name: Chatgpt
+Price: 15000.0
+Model Parameter Count: 8000
+Context Window: 5000
+Remaining prompts: 1015
+------------------------------------
+
+Type: ProPlan
+Index: 1
+Model Name: Gemini
+Price: 15000.0
+Model Parameter Count: 8000
+Context Window: 4000
+Remaining slots: 3
+Members added: 
+------------------------------------
+
+Type: ProPlan
+Index: 2
+Model Name: Chatgpt
+Price: 137273.0
+Model Parameter Count: 273727
+Context Window: 283772
+Remaining slots: 2
+Members added: Bishesh
+------------------------------------
+
+Type: ProPlan
+Index: 3
+Model Name: Chatgpt
+Price: 15000.0
+Model Parameter Count: 28382
+Context Window: 28382
+Remaining slots: 1
+Members added: Bishesh
+------------------------------------
+
+Type: ProPlan
+Index: 4
+Model Name: Chatgpt
+Price: 15000.0
+Model Parameter Count: 28382
+Context Window: 28382
+Remaining slots: 0
+Members added: Bishesh, Talu
+------------------------------------
+
